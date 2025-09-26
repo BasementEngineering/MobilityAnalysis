@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    image: python:3.11-slim
+    container_name: blindspotter_mobility
+    volumes:
+      - ./input:/input
+      - ./output:/output
+      - ./debug:/debug
+      - ./src:/src
+      - ./setup.sh:/setup.sh
+    command: ["/bin/bash", "setup.sh"]

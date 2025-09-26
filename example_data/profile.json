@@ -8,20 +8,6 @@
         "max_walking_distance_km": 2,
         "travel_time_importance": "high"
     },
-    "points_of_interest": [
-        "Work"{
-            "address": "",
-            "coordinates": [0, 0]
-        },
-        "Home"{
-            "address": "",
-            "coordinates": [0, 0]
-        },
-        "Gym"{
-            "address": "",
-            "coordinates": [0, 0]
-        }
-    ],
     "daily_routines": [
         [
             "07:00", "Wake up","home"
@@ -35,5 +21,49 @@
         [
             "20:00", "Return home","home"
         ]
+    ],
+    "points_of_interest":{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.6261347,
+                    51.9606649
+                ]
+            },
+            "properties": {
+                "name": "office"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.622539,
+                    51.9589386
+                ]
+            },
+            "properties": {
+                "name": "gym"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.6261,
+                    51.9607
+                ]
+            },
+            "properties": {
+                "name": "home"
+            }
+        }
     ]
+}
 }

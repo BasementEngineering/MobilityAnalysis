@@ -1,3 +1,4 @@
+from time import time
 import requests
 import datetime
 import os
@@ -48,11 +49,58 @@ def get_travel_time(mode):
     else:
         return f"Error: {data.get('status', 'Unknown error')}"
 
+def newFileInInputFolder():
+    input_folder = os.path.join(os.path.dirname(__file__), "input")
+    files = os.listdir(input_folder)
+    return any(file.endswith(".json") for file in files)
+
+def getLastFileInInputFolder():
+    input_folder = os.path.join(os.path.dirname(__file__), "input")
+    files = [file for file in os.listdir(input_folder) if file.endswith(".json")]
+    if not files:
+        return None
+    files.sort(key=lambda x: os.path.getmtime(os.path.join(input_folder, x)), reverse=True)
+    return files[0]
+
+def get_trips_from_data(profile):
+    for daily_routine in profile.get("daily_routines", []):
+        origin = daily_routine.get("origin")
+        destination = daily_routine.get("destination")
+        mode = daily_routine.get("mode", "driving")
+        if origin and destination:
+            yield origin, destination, mode
+
 def main():
-    print(f"Directions from {ORIGIN} to {DESTINATION} (arrival at {ARRIVAL_TIME.strftime('%H:%M')})")
-    for mode, label in MODES.items():
-        travel_time = get_travel_time(mode)
-        print(f"{label}: {travel_time}")
+    print("Starting scenario analyzer...")
+    for _ in range(3):
+        while not newFileInInputFolder():
+            time.sleep(1)
+        filename = getLastFileInInputFolder()
+        if filename:
+            print(f"Processing file: {filename}")
+            filepath = os.path.join(os.path.dirname(__file__), "input", filename)
+            with open(filepath, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            print(f"Loaded data: {data}")
+        else:
+            print("No input file found.")
+            return
+        
+        trips = get_trips_from_data(data)
+        for daily_routine in data.get("daily_routines", []):
+            origin = daily_routine.get("origin")
+            destination = daily_routine.get("destination")
+            mode = daily_routine.get("mode", "driving")
+            if origin and destination:
+                print(f"Analyzing trip from {origin} to {destination} by {MODES.get(mode, mode)}")
+                travel_time = get_travel_time(mode)
+                print(f"Estimated travel time by {MODES.get(mode, mode)}: {travel_time}")
+                daily_routine["estimated_travel_time"] = travel_time
+
+
+       # print(f"Estimated travel time by {MODES[mode]}: {travel_time}")
+
+
 
 if __name__ == "__main__":
     main()
