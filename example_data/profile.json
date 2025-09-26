@@ -1,0 +1,39 @@
+{
+    "name": "Max Mustermann",
+    "age": 30,
+    "description": "A software developer living in City.",
+    "preferences":
+    {
+        "transportation_modes": ["driving", "walking", "transit"],
+        "max_walking_distance_km": 2,
+        "travel_time_importance": "high"
+    },
+    "points_of_interest": [
+        "Work"{
+            "address": "",
+            "coordinates": [0, 0]
+        },
+        "Home"{
+            "address": "",
+            "coordinates": [0, 0]
+        },
+        "Gym"{
+            "address": "",
+            "coordinates": [0, 0]
+        }
+    ],
+    "daily_routines": [
+        [
+            "07:00", "Wake up","home"
+        ],
+        [
+            "09:00", "Work","office"
+        ],
+        [
+            "18:00", "Gym","gym"
+        ],
+        [
+            "20:00", "Return home","home"
+        ]
+    ]
+}

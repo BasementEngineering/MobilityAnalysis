@@ -1,0 +1,44 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.6261347,
+                    51.9606649
+                ]
+            },
+            "properties": {
+                "name": "office"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.622539,
+                    51.9589386
+                ]
+            },
+            "properties": {
+                "name": "gym"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.6261,
+                    51.9607
+                ]
+            },
+            "properties": {
+                "name": "home"
+            }
+        }
+    ]
+}
