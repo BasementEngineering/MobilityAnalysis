@@ -1,8 +1,7 @@
-from time import time
+import time
 import requests
 import datetime
 import os
-import pprint
 import json
 from dotenv import load_dotenv
 
@@ -50,7 +49,7 @@ def get_travel_time(mode):
         return f"Error: {data.get('status', 'Unknown error')}"
 
 def newFileInInputFolder():
-    input_folder = os.path.join(os.path.dirname(__file__), "input")
+    input_folder = os.path.join("input")
     files = os.listdir(input_folder)
     return any(file.endswith(".json") for file in files)
 
@@ -99,8 +98,6 @@ def main():
 
 
        # print(f"Estimated travel time by {MODES[mode]}: {travel_time}")
-
-
 
 if __name__ == "__main__":
     main()

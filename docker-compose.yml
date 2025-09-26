@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   app:
     image: python:3.11-slim
@@ -10,4 +8,4 @@ services:
       - ./debug:/debug
       - ./src:/src
       - ./setup.sh:/setup.sh
-    command: ["/bin/bash", "setup.sh"]
+    command: ["/bin/bash", "src/setup.sh"]
